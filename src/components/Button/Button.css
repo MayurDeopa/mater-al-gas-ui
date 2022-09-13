@@ -1,0 +1,43 @@
+.primary_button,.secondary_button{
+    height:2rem;
+    width: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border-radius: 4px;
+    outline: solid 3px transparent;
+    outline-offset: 2px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.primary_button{
+    color: white;
+    
+    background-color: #3D56B2;
+}
+
+.primary_button a{
+    color: white;
+}
+
+.secondary_button{
+    background-color: #dadada;
+    color: black;
+
+}
+
+.primary_button:focus,.button:active{
+    outline-color: #3D56B2;
+}
+
+.primary_button:disabled,.secondary_button:disabled{
+    outline: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.secondary_button:focus,.secondary_button:active{
+    outline-color: #b0b0b0;
+}
