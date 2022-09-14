@@ -13,7 +13,7 @@ interface FormProps {
 const Form:React.FC<FormProps> =(props)=>{
 
     const {
-        title = "Form",
+        title ,
         children,
         styles,
         action = ()=>alert("Submit")
@@ -30,7 +30,7 @@ const Form:React.FC<FormProps> =(props)=>{
             onSubmit={onSubmit}
             style={{...styles}}
         >
-            <h2 className="form_header">{title}</h2>  
+           {title &&  <h3 className="form_header">{title}</h3>}  
             {children}
         </form>
     )

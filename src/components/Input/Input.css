@@ -5,7 +5,7 @@
     width: 100%;
     min-height: 40px;
     border-radius: 4px;
-    box-shadow: black 0px 0px 0px 1px inset;
+    box-shadow: black 0px 0px 0px 1px ;
     background-color: var(--secondary-theme-color);
     padding-top: 15px;
     padding-right: 4px;
@@ -85,7 +85,7 @@
     position: absolute;
     pointer-events: none;
     left: 8px;
-    top:9px;
+    top:10px;
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
@@ -98,7 +98,7 @@
 
 
 .group:focus-within{
-    box-shadow: rgb(2, 122, 192) 0px 0px 0px 1.5px inset ;
+    box-shadow: rgb(2, 122, 192) 0px 0px 0px 2px  ;
 }
 
 .input:disabled{

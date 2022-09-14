@@ -5,20 +5,23 @@ export interface TransitionProps{
     delay:number
 }
 
-const useTransition =(isMounted:boolean,delay:number)=>{
-    const [hasTransitioned,setTransitional] = useState(false)
-    useEffect(()=>{
-        let timeoutId
-        if(isMounted && !hasTransitioned){
-            setTransitional(true)
+function useTransition(isMounted: boolean, delayTime: number) {
+    const [ shouldRender, setShouldRender ] = useState(false);
+
+    useEffect(() => {
+        let timeoutId:number
+        if (isMounted && !shouldRender) {
+            setShouldRender(true);
         }
-        else if(!isMounted && hasTransitioned){
-            timeoutId = setTimeout(()=>setTransitional(false),delay)
+        else if(!isMounted && shouldRender) {
+            timeoutId = window.setTimeout(
+                () => setShouldRender(false), 
+                delayTime
+            );
         }
-        return clearTimeout(timeoutId)
-    },[isMounted,hasTransitioned,delay])
-    
-    return hasTransitioned
+        return () => clearTimeout(timeoutId);
+    }, [isMounted, delayTime, shouldRender]);
+    return shouldRender;
 }
 
 export default useTransition;

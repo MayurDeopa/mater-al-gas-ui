@@ -10,7 +10,7 @@ interface DrawerProps{
     children?:JSX.Element | JSX.Element[]
     open?:boolean,
     action?:()=>void,
-    loading:boolean
+    loading?:boolean
 
 }
 
@@ -30,21 +30,22 @@ const Drawer:React.FC<DrawerProps> =(props)=>{
         action,
         loading = false
     } = props
-    const hasTransitioned = useTransition(open,300)
-
+    const hasTransitioned = useTransition(open,600)
+    const mountAnimation = {animation: "slideIn 0.6s ease-in-out"}
+    const unMountAnimation ={animation: "slideOut 0.6s ease-in-out"}
     return(
        <React.Fragment>
         {
-            open
+            hasTransitioned
             &&
             <Modal
             container={container}
-            open={hasTransitioned}
             action={action}
+            open={hasTransitioned}
 
         >
             
-                <div className={hasTransitioned?'drawer ':'drawer drawer_hidden'}>
+                <div className={'drawer'} style={open?mountAnimation:unMountAnimation}>
                 <React.Fragment>
                     {loading && (
                         <Progress

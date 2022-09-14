@@ -4,7 +4,7 @@ import './Input.css'
 import '../index.css'
 
 
-type inputType = 'textarea' | 'text' | 'password' | 'search' | 'number' | 'url'
+type inputType = 'textarea' | 'text' | 'password' | 'search' | 'number' | 'url'|'date'
 
 type inputValue = string | number
 

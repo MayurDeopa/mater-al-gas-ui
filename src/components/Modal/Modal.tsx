@@ -3,6 +3,8 @@ import Portal from "../Portal";
 
 
 
+
+
 import './Modal.css'
 
 interface ModalProps{
@@ -16,7 +18,6 @@ const Modal:React.FC<ModalProps> = (props)=>{
 
     const {
         children,
-        open=false,
         action
     }= props
 
@@ -26,7 +27,7 @@ const Modal:React.FC<ModalProps> = (props)=>{
             wrapperId="modal-root"
         >
             <div 
-                className={open?`modal_wrapper `:'modal_wrapper modal_hidden'}
+                className={"modal_wrapper"}
             >
                 <div
                     onClick={action}
@@ -44,3 +45,5 @@ const Modal:React.FC<ModalProps> = (props)=>{
 }
 
 export default Modal;
+
+
