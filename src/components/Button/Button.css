@@ -15,7 +15,7 @@
 .primary_button{
     color: white;
     
-    background-color: #3D56B2;
+    background-color: rgb(25, 113, 194);
 }
 
 .primary_button a{
@@ -23,13 +23,13 @@
 }
 
 .secondary_button{
-    background-color: #dadada;
+    background-color: #eaeaea;
     color: black;
 
 }
 
 .primary_button:focus,.button:active{
-    outline-color: #3D56B2;
+    outline-color: rgb(25, 113, 194);
 }
 
 .primary_button:disabled,.secondary_button:disabled{

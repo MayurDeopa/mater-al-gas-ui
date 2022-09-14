@@ -1,4 +1,5 @@
-import React, { CSSProperties } from "react"
+import React, { CSSProperties, } from "react"
+import {useTransition} from "../../index"
 import Modal from "../Modal"
 import Progress from "../Progress"
 
@@ -7,7 +8,7 @@ import './Drawer.css'
 interface DrawerProps{
     container?:string
     children?:JSX.Element | JSX.Element[]
-    hidden?:boolean,
+    open?:boolean,
     action?:()=>void,
     loading:boolean
 
@@ -25,18 +26,25 @@ const Drawer:React.FC<DrawerProps> =(props)=>{
     const {
         container = 'modal-root',
         children,
-        hidden=true,
+        open=true,
         action,
         loading = false
     } = props
+    const hasTransitioned = useTransition(open,300)
 
     return(
-        <Modal
+       <React.Fragment>
+        {
+            open
+            &&
+            <Modal
             container={container}
-            hidden={hidden}
+            open={hasTransitioned}
             action={action}
+
         >
-            <div className={hidden?'drawer drawer_hidden':'drawer'}>
+            
+                <div className={hasTransitioned?'drawer ':'drawer drawer_hidden'}>
                 <React.Fragment>
                     {loading && (
                         <Progress
@@ -46,7 +54,10 @@ const Drawer:React.FC<DrawerProps> =(props)=>{
                 </React.Fragment>
                 {children}
             </div>
+            
         </Modal>
+        }
+       </React.Fragment>
     )
 }
 

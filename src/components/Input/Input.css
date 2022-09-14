@@ -98,7 +98,7 @@
 
 
 .group:focus-within{
-    box-shadow: rgb(0, 162, 255) 0px 0px 0px 1.5px inset ;
+    box-shadow: rgb(2, 122, 192) 0px 0px 0px 1.5px inset ;
 }
 
 .input:disabled{

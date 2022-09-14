@@ -1,32 +1,32 @@
 import React from "react";
-
 import Portal from "../Portal";
+
+
 
 import './Modal.css'
 
 interface ModalProps{
     container?:string
     children?:JSX.Element | JSX.Element[]
-    hidden?:boolean,
+    open?:boolean,
     action?:()=>void
 }
 
 const Modal:React.FC<ModalProps> = (props)=>{
 
     const {
-        container = 'modal-root',
         children,
-        hidden=false,
+        open=false,
         action
     }= props
 
 
     return(
         <Portal
-            container={document.getElementById(container) as HTMLElement}
+            wrapperId="modal-root"
         >
             <div 
-                className={hidden?`modal_wrapper modal_hidden`:'modal_wrapper'}
+                className={open?`modal_wrapper `:'modal_wrapper modal_hidden'}
             >
                 <div
                     onClick={action}
@@ -39,7 +39,7 @@ const Modal:React.FC<ModalProps> = (props)=>{
                 />
                 {children}
             </div>
-        </Portal>
+            </Portal>
     )
 }
 

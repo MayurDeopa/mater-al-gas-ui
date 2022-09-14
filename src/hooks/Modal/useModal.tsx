@@ -1,12 +1,10 @@
-import React, { useState } from "react"
+import  { useState } from "react"
 
 
 const useModal =()=>{
     const [drawerOpen,setDrawerOpen] = useState<boolean>(false)
     const [isLoading,setIsLoading] = useState<boolean>(false)
-    const [drawerContent,setDrawerContent] = useState<JSX.Element>(<React.Fragment/>)
-    const openDrawer =(component:JSX.Element)=>{
-        if(component) setDrawerContent(component)
+    const openDrawer =()=>{
         setDrawerOpen(true)
     }
 
@@ -24,7 +22,6 @@ const useModal =()=>{
     }
     return {
         drawerOpen,
-        drawerContent,
         openDrawer,
         closeDrawer,
         startLoader,
