@@ -3,18 +3,15 @@ import React from "react";
 import './Button.css'
 
 
-type type= 'submit' | 'reset' | 'button'
 type variant= 'primary' | 'secondary'
 
-interface ButtonProps{
+interface ButtonProps extends HTMLButtonElement{
     href?:string
     text?:string
-    action?:()=>void
     loading?:boolean
     icon?:React.ReactNode
-    type?:type
     variant?:variant
-    styles?:{}
+
     
 }
 
@@ -24,17 +21,13 @@ const Button:React.FC<ButtonProps>=(props)=>{
     const {
         href,
         text ="Button",
-        action,
         loading = false,
         icon,
-        type='button',
         variant='primary',
-        styles
     } = props
     if(href){
         return(
             <button 
-                style={{...styles}}
                 className="primary_button">
                 <a href={href}>
                     {text}
@@ -47,11 +40,8 @@ const Button:React.FC<ButtonProps>=(props)=>{
     if(variant==='primary'){
         return(
             <button
-            style={{...styles}}
                 className={"primary_button"}
-                type={type}
                 disabled={loading}
-                onClick={action}
             >
                 {text}
                 {icon}
@@ -61,12 +51,8 @@ const Button:React.FC<ButtonProps>=(props)=>{
 
     return(
         <button
-                style={{...styles}}
                 className="secondary_button"
-                type={type}
                 disabled={loading}
-                
-                onClick={action}
             >
                 {text}
                 {icon}
