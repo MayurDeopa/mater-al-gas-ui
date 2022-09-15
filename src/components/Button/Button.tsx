@@ -3,15 +3,18 @@ import React from "react";
 import './Button.css'
 
 
+type type= 'submit' | 'reset' | 'button'
 type variant= 'primary' | 'secondary'
 
-interface ButtonProps extends HTMLButtonElement{
+interface ButtonProps{
     href?:string
     text?:string
+    action?:React.MouseEventHandler<HTMLButtonElement> | undefined
     loading?:boolean
     icon?:React.ReactNode
+    type?:type
     variant?:variant
-
+    styles?:{}
     
 }
 
@@ -20,14 +23,18 @@ interface ButtonProps extends HTMLButtonElement{
 const Button:React.FC<ButtonProps>=(props)=>{
     const {
         href,
-        text ="Button",
+        text ="BUTTON",
+        action,
         loading = false,
         icon,
+        type='button',
         variant='primary',
+        styles
     } = props
     if(href){
         return(
             <button 
+                style={{...styles}}
                 className="primary_button">
                 <a href={href}>
                     {text}
@@ -40,8 +47,11 @@ const Button:React.FC<ButtonProps>=(props)=>{
     if(variant==='primary'){
         return(
             <button
+            style={{...styles}}
                 className={"primary_button"}
+                type={type}
                 disabled={loading}
+                onClick={action}
             >
                 {text}
                 {icon}
@@ -51,8 +61,12 @@ const Button:React.FC<ButtonProps>=(props)=>{
 
     return(
         <button
+                style={{...styles}}
                 className="secondary_button"
+                type={type}
                 disabled={loading}
+                
+                onClick={action}
             >
                 {text}
                 {icon}

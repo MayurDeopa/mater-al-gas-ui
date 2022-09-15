@@ -1,6 +1,6 @@
 .primary_button,.secondary_button{
     height:2.5rem;
-    width: 6rem;
+    width: 8rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,13 +8,15 @@
     border-radius: 4px;
     outline: solid 3px transparent;
     outline-offset: 2px;
+    font-size: 14px;
     cursor: pointer;
     transition: 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 .primary_button{
     color: white;
-    
+    opacity: 0.8;
     background-color: rgb(25, 113, 194);
 }
 
@@ -28,9 +30,12 @@
 
 }
 
-.primary_button:focus,.button:active{
-    outline-color: rgb(25, 113, 194);
+.primary_button:hover,.secondary_button:hover{
+    opacity: 1;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
+
+
 
 .primary_button:disabled,.secondary_button:disabled{
     outline: none;
@@ -38,6 +43,3 @@
     cursor: not-allowed;
 }
 
-.secondary_button:focus,.secondary_button:active{
-    outline-color: #b0b0b0;
-}

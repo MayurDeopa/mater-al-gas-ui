@@ -1,11 +1,14 @@
+textarea{
+    outline: none;
+}
+
+
 .group{
     position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
     min-height: 40px;
-    border-radius: 4px;
-    box-shadow: black 0px 0px 0px 1px ;
     background-color: var(--secondary-theme-color);
     padding-top: 15px;
     padding-right: 4px;
@@ -19,8 +22,8 @@
     padding: 4px 7px;
     font-size: 15px;
     color:var(--primary-text-color);
+    border-bottom: solid 1px black;
     background-color: transparent;
-    border: none;
 }
 
 .radio_container{
@@ -96,9 +99,26 @@
     font-size: 13px;
 }
 
+.dash{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 0;
+    height: 1.5px;
+    background-color:rgb(2, 122, 192) ;
+    transition: 0.3s ease-in-out;
+}
 
-.group:focus-within{
-    box-shadow: rgb(2, 122, 192) 0px 0px 0px 2px  ;
+.group:focus-within> .dash{
+    width: 100%;
+}
+
+.group:focus-within .label{
+    color: rgb(2, 122, 192) ;
 }
 
 .input:disabled{
@@ -112,3 +132,4 @@
     top: 2px;
     font-size: 12px;
 }
+

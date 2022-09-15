@@ -4,22 +4,38 @@ import './Input.css'
 import '../index.css'
 
 
+type inputType = 'textarea' | 'text' | 'password' | 'search' | 'number' | 'url'|'date'
 
+type inputValue = string | number
 
-interface InputProps extends HTMLInputElement{
+interface InputProps{
+    type?:inputType
     maxWidth?:string
+    autoFocus?:boolean
+    action?:React.FormEventHandler<HTMLInputElement> |undefined
+    value?:inputValue
+    label?:string
+    disabled?:boolean
+    required?:boolean
     isValid?:boolean | (()=>boolean) 
-    placeholderText?:string
+    title?:string
+    placeholder?:string
     errMsg?:string
 }
 
 const Input:React.FC<InputProps> =(props)=>{
 
     const {
-        type,
+        type = "text",
         maxWidth,
+        autoFocus = false,
+        value,
+        action,
+        disabled = false,
+        required = true,
         isValid = true,
-        placeholderText = 'placeholder',
+        title = "Title",
+        placeholder,
         errMsg = "This is a required field"
 
     } = props
@@ -38,12 +54,15 @@ const Input:React.FC<InputProps> =(props)=>{
                 <div 
                         className={`group ${!isValid && 'error_shadow'}`}>
                         <textarea
-                            className={`input`}      
+                            className={`input`}
+                            value={value}
+                            disabled={disabled}   
+                            required={required}       
                         />
-                        <p className={`label`}>{placeholderText }</p>
+                        {placeholder && <p className={`label`}>{placeholder || title}</p>}
                     </div>
                     <React.Fragment>
-                    {!isValid &&<p className={'error_message'}>{errMsg || `${placeholderText} is required`}</p>}
+                    {!isValid &&<p className={'error_message'}>{errMsg || `${placeholder} is required`}</p>}
                     </React.Fragment>
             </Card>
         )
@@ -55,12 +74,19 @@ const Input:React.FC<InputProps> =(props)=>{
             <div 
                     className={`group ${!isValid && 'error_shadow'}`}>
                     <input
-                        className={`input`}    
+                        type={type}
+                        autoFocus={autoFocus}
+                        onChange={action}
+                        className={`input`}
+                        value={value}
+                        disabled={disabled}   
+                        required={required}       
                     />
-                    <p className={`label`}>{placeholderText}</p>
+                   {placeholder && <p className={`label`}>{placeholder || title}</p>}
+                   <div className='dash'/>
                 </div>
                 <React.Fragment>
-                {!isValid &&<p className={'error_message'}>{errMsg || `${placeholderText} is required`}</p>}
+                {!isValid &&<p className={'error_message'}>{errMsg || `${placeholder} is required`}</p>}
                 </React.Fragment>
         </Card>
     )
