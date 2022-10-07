@@ -15,7 +15,8 @@ interface DrawerProps{
     width?:string,
     title?:string,
     position?:position,
-    height?:string
+    height?:string,
+    styles?:CSSProperties
 
 }
 
@@ -37,7 +38,8 @@ const Drawer:React.FC<DrawerProps> =(props)=>{
         height='100%',
         loading = false,
         title,
-        position='right'
+        position='right',
+        styles
     } = props
 
 
@@ -61,7 +63,8 @@ const Drawer:React.FC<DrawerProps> =(props)=>{
                             width:width,
                             height:height,
                             [position]:open?0:`-${width}`,
-                            animationName:`${position}Slide`
+                            animationName:`${position}Slide`,
+                            ...styles
                         }}
                     >
                     <React.Fragment>
