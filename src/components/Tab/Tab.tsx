@@ -1,6 +1,5 @@
 import React,{CSSProperties, useState} from 'react'
-import Card from '../Card'
-import Container from '../Container'
+import {Container,Card} from '../index'
 import TabLabel from './TabLabel'
 
 

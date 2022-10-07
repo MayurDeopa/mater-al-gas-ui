@@ -1,4 +1,5 @@
 .primary_button,.secondary_button{
+    position: relative;
     height:2.5rem;
     width: 8rem;
     display: flex;
@@ -6,17 +7,15 @@
     justify-content: center;
     gap: 15px;
     border-radius: 4px;
-    outline: solid 3px transparent;
-    outline-offset: 2px;
     font-size: 14px;
     cursor: pointer;
-    transition: 0.2s ease-in-out;
+    overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    transition: 0.3s ease-in-out;
 }
 
 .primary_button{
     color: white;
-    opacity: 0.8;
     background-color: rgb(25, 113, 194);
 }
 
@@ -25,17 +24,15 @@
 }
 
 .secondary_button{
-    background-color: #eaeaea;
+    background-color: rgb(227, 227, 227);
     color: black;
 
 }
 
-.primary_button:hover,.secondary_button:hover{
-    opacity: 1;
+
+.primary_button:active,.secondary_button:active{
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
-
-
 
 .primary_button:disabled,.secondary_button:disabled{
     outline: none;

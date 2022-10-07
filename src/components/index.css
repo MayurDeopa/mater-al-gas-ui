@@ -11,9 +11,10 @@
     font-family: Verdana, sans-serif;
   }
   
-  input,button{
+  input,button,select,textarea{
     border: none;
     outline: none;
+    appearance: none;
   }
 
   a{

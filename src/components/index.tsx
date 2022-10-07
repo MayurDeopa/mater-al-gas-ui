@@ -18,3 +18,5 @@ export {default as Modal} from './Modal'
 export {default as Tab} from './Tab'
 
 export {default as Drawer} from './Drawer'
+
+export {default as installRipple} from './Ripples'

@@ -1,5 +1,5 @@
 import React from "react";
-import Portal from "../Portal";
+import {Portal} from "../index";
 
 
 
@@ -11,14 +11,16 @@ interface ModalProps{
     container?:string
     children?:JSX.Element | JSX.Element[]
     open?:boolean,
-    action?:()=>void
+    action?:()=>void,
+    hasTransitioned?:boolean
 }
 
 const Modal:React.FC<ModalProps> = (props)=>{
 
     const {
         children,
-        action
+        action,
+        hasTransitioned,
     }= props
 
 
@@ -28,6 +30,9 @@ const Modal:React.FC<ModalProps> = (props)=>{
         >
             <div 
                 className={"modal_wrapper"}
+                style={{
+                    opacity:!hasTransitioned?0:1
+                }}
             >
                 <div
                     onClick={action}
