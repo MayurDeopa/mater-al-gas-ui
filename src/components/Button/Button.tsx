@@ -1,6 +1,8 @@
 import React from "react";
 import {installRipple} from '../index'
 
+import {Spinner} from "../index";
+
 import './Button.css'
 
 
@@ -11,6 +13,7 @@ interface ButtonProps{
     href?:string
     text?:string
     action?:React.MouseEventHandler<HTMLButtonElement> | undefined
+    disabled?:boolean
     loading?:boolean
     icon?:React.ReactNode
     type?:type
@@ -25,9 +28,10 @@ interface ButtonProps{
 const Button:React.FC<ButtonProps>=(props)=>{
     const {
         href,
-        text ="BUTTON",
+        text ,
         action,
         loading = false,
+        disabled,
         icon,
         type='button',
         variant='primary',
@@ -35,6 +39,11 @@ const Button:React.FC<ButtonProps>=(props)=>{
         rippleColor ='black',
         rippleTimeout =400
     } = props
+
+    const extraClasses = disabled?'disabled':''
+
+    const Icon = loading?<Spinner/>:icon
+
     if(href){
         return(
 
@@ -56,7 +65,7 @@ const Button:React.FC<ButtonProps>=(props)=>{
                     className="primary_button">
                     <a href={href}>
                         {text}
-                        {icon}
+                        {Icon}
                     </a>
                 </button>
 
@@ -68,9 +77,9 @@ const Button:React.FC<ButtonProps>=(props)=>{
 
                 <button
                     style={{...styles}}
-                    className={"primary_button"}
+                    className={`primary_button ${extraClasses}`}
                     type={type}
-                    disabled={loading}
+                    disabled={disabled || loading}
                     onClick={action}
                     onMouseDown={({ target, nativeEvent }) =>
                         installRipple({
@@ -87,7 +96,7 @@ const Button:React.FC<ButtonProps>=(props)=>{
             }
                 >
                     {text}
-                    {icon}
+                    {Icon}
                 </button>
         )
     }
@@ -96,9 +105,9 @@ const Button:React.FC<ButtonProps>=(props)=>{
         
                 <button
                     style={{...styles}}
-                    className={"secondary_button"}
+                    className={`secondary_button ${extraClasses}`}
                     type={type}
-                    disabled={loading}
+                    disabled={disabled || loading}
                     onClick={action}
                     onMouseDown={({ target, nativeEvent }) =>
                         installRipple({
@@ -114,7 +123,7 @@ const Button:React.FC<ButtonProps>=(props)=>{
                         })}
                 >
                     {text}
-                    {icon}
+                    {Icon}
                 </button>
     )
 }

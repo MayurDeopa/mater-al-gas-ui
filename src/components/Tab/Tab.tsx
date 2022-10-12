@@ -11,12 +11,14 @@ export type TabItem={
     key:number ,
     content:JSX.Element,
     disabled?:boolean
+    styles?:CSSProperties
 }
 
 export interface TabProps{
     defaultActiveKey?:number
     items:TabItem[]
     styles?:CSSProperties
+    labelStyles?:CSSProperties
 }
 
 const Tab:React.FC<TabProps> =(props)=>{
@@ -26,7 +28,8 @@ const Tab:React.FC<TabProps> =(props)=>{
     const {
         defaultActiveKey = 0,
         items,
-        styles
+        styles,
+        labelStyles
     } = props
 
     const [activeTab,setActiveTab] = useState<number >(defaultActiveKey)
@@ -59,6 +62,7 @@ const Tab:React.FC<TabProps> =(props)=>{
                             active={isActive(i.key)}
                             disabled={i.disabled}
                             key={index}
+                            styles={labelStyles}
                         >
                          {i.label}   
                         </TabLabel>

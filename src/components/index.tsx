@@ -20,3 +20,9 @@ export {default as Tab} from './Tab'
 export {default as Drawer} from './Drawer'
 
 export {default as installRipple} from './Ripples'
+
+export {default as ButtonGroup} from './ButtonGroup'
+
+export {default as DropDownContainer} from './DropDownContainer'
+
+export {default as Spinner} from './Spinner'

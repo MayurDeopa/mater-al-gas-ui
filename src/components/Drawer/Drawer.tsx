@@ -1,6 +1,6 @@
 import React, { CSSProperties, } from "react"
 import {useTransition} from "../../hooks"
-import {Modal,Progress,Card,Button} from '../index'
+import {Modal,Progress,Card} from '../index'
 
 import './Drawer.css'
 
@@ -16,7 +16,7 @@ interface DrawerProps{
     title?:string,
     position?:position,
     height?:string,
-    styles?:CSSProperties
+    styles?:CSSProperties,
 
 }
 
@@ -82,15 +82,6 @@ const Drawer:React.FC<DrawerProps> =(props)=>{
                         )}
                     </React.Fragment>
                     {children}
-                    <Card styles={{
-                        justifyContent:'flex-end',
-                        position:'absolute',
-                        bottom:'0',
-                        padding:'10px'
-                        }}>
-                            <Button variant="secondary" text="Close" action={action}/>
-                            <Button text="OK"/>
-                    </Card>
                     </div>
             
         </Modal>

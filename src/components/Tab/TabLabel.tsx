@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import {installRipple} from '../index'
 
 import './Tab.css'
@@ -9,6 +9,7 @@ export interface TabLabelProps{
     active:boolean
     disabled?:boolean
     action:()=>void
+    styles?:CSSProperties
 }
 
 const TabLabel:React.FC<TabLabelProps> =(props)=>{
@@ -17,6 +18,7 @@ const TabLabel:React.FC<TabLabelProps> =(props)=>{
         children,
         active,
         action,
+        styles,
         disabled = false
     }= props
 
@@ -25,6 +27,7 @@ const TabLabel:React.FC<TabLabelProps> =(props)=>{
                 disabled={disabled}
                 className={active?'tab_label active':'tab_label'}
                 onClick={action}
+                style={{...styles}}
                 onMouseDown={({ target, nativeEvent }) =>
                         installRipple({
                             clickedElement: target,

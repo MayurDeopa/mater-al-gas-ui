@@ -8,37 +8,44 @@ textarea{
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color:transparent;
+    height: 2.5rem;
+    border-radius: 4px;
+    box-shadow: rgb(7, 7, 7) 0px 0px 0px 1px inset;;
+    background-color: transparent;
+    margin-bottom: 10px;
     transition: 0.3s ease-in-out;
 }
 
 .input{
-    height: 2.5rem;
-    padding: 4px;
+    height: 100%;
     width: 100%;
-    color:var(--primary-text-color);
-    box-shadow: black 0px 0px 0px 1px inset;
-    border-radius: 4px;
+    padding: 4px 7px;
+    font-size: 15px;
+    color:black;
     background-color: transparent;
-    transition: 0.3s ease-in-out;
+    border: none;
+    -webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
 
 
-.error_message{
-    color: red;
-}
 
+
+
+
+.group:focus-within{
+    box-shadow: var(--info) 0px 0px 0px 2px inset ;
+}
 
 .input:disabled{
-    opacity: 0.2;
+    opacity: 0.6;
     cursor: not-allowed;
 }
 
-.input:focus,.input:active{
-    box-shadow: rgb(0, 106, 255) 0px 0px 0px 1.5px inset;
-}
-
-.input_error{
-    box-shadow: red 0px 0px 0px 1px inset;
-
+.input:focus ~ .label,
+.input:valid ~ .label,
+.input:disabled ~  .label{
+    top: 4px;
+    font-size: 12px;
 }
